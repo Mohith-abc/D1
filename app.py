@@ -1,4 +1,4 @@
-from flask import Flask, render_template_string, url_for
+from flask import Flask, render_template_string
 
 app = Flask(__name__)
 
@@ -38,37 +38,32 @@ HTML = """
     </style>
 </head>
 <body>
+
 <h1>Dhanush Gallery</h1>
+
 <div class="gallery">
-    <div class="video-frame">
-        <video autoplay muted loop controls>
-            <source src="{{ video }}" type="video/mp4">
-        </video>
-    </div>
-    {% for p in photos %}
-    <div class="frame"><img src="{{ p }}"></div>
-    {% endfor %}
+
+<div class="video-frame">
+<video autoplay muted loop controls>
+<source src="static/videos/WhatsApp Video 2026-02-05 at 11.04.06 PM.mp4">
+</video>
+</div>
+
+<img src="static/photos/WhatsApp Image 2026-02-04 at 9.58.43 PM (1).jpeg">
+<img src="static/photos/WhatsApp Image 2026-02-04 at 9.58.43 PM.jpeg">
+<img src="static/photos/WhatsApp Image 2026-02-04 at 9.58.45 PM (1).jpeg">
+<img src="static/photos/WhatsApp Image 2026-02-04 at 9.58.44 PM (1).jpeg">
+<img src="static/photos/WhatsApp Image 2026-02-04 at 9.58.44 PM.jpeg">
+<img src="static/photos/WhatsApp Image 2026-02-04 at 9.58.45 PM (2).jpeg">
+<img src="static/photos/WhatsApp Image 2026-02-04 at 9.58.45 PM.jpeg">
+<img src="static/photos/WhatsApp Image 2026-02-04 at 9.58.46 PM (1).jpeg">
+<img src="static/photos/WhatsApp Image 2026-02-04 at 9.58.46 PM.jpeg">
+
 </div>
 </body>
 </html>
 """
 
-PHOTOS = [
-    "photos/WhatsApp Image 2026-02-04 at 9.58.43 PM (1).jpeg",
-    "photos/WhatsApp Image 2026-02-04 at 9.58.43 PM.jpeg",
-    "photos/WhatsApp Image 2026-02-04 at 9.58.45 PM (1).jpeg",
-    "photos/WhatsApp Image 2026-02-04 at 9.58.44 PM (1).jpeg",
-    "photos/WhatsApp Image 2026-02-04 at 9.58.44 PM.jpeg",
-    "photos/WhatsApp Image 2026-02-04 at 9.58.45 PM (2).jpeg",
-    "photos/WhatsApp Image 2026-02-04 at 9.58.45 PM.jpeg",
-    "photos/WhatsApp Image 2026-02-04 at 9.58.46 PM (1).jpeg",
-    "photos/WhatsApp Image 2026-02-04 at 9.58.46 PM.jpeg",
-]
-
-VIDEO = "videos/WhatsApp Video 2026-02-05 at 11.04.06 PM.mp4"
-
 @app.route("/")
 def home():
-    photos = [url_for("static", filename=p) for p in PHOTOS]
-    video = url_for("static", filename=VIDEO)
-    return render_template_string(HTML, photos=photos, video=video)
+    return render_template_string(HTML)
