@@ -1,0 +1,6 @@
+@echo off
+cd /d %~dp0
+echo Installing Python requirements (if needed)...
+py -3 -m pip install -r requirements.txt
+echo Starting Waitress server on port 10000...
+py -3 -m waitress --listen=*:10000 app:app

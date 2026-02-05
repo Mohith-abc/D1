@@ -1,0 +1,87 @@
+from flask import Flask, render_template_string, url_for, jsonify
+
+app = Flask(__name__)
+
+HTML = """
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dhanush Gallery</title>
+    <style>
+        body { margin:0; font-family:Arial; background:#f3f3f3 }
+        h1 { text-align:center; padding:20px }
+
+        .gallery {
+            display:grid;
+            grid-template-columns:repeat(4,1fr);
+            gap:25px;
+            max-width:1400px;
+            margin:auto;
+            padding:20px;
+        }
+
+        .video-frame {
+            grid-column:2 / span 2;
+            grid-row:1 / span 2;
+            background:black;
+            padding:14px;
+            border-radius:20px;
+        }
+
+        video { width:100%; border-radius:14px }
+
+        .frame {
+            background:black;
+            padding:10px;
+            border-radius:18px;
+        }
+
+        img {
+            width:100%;
+            height:560px;
+            object-fit:cover;
+            border-radius:14px;
+        }
+
+        @media(max-width:900px){
+            .gallery{ grid-template-columns:1fr }
+        }
+    </style>
+</head>
+
+<body>
+<h1>Dhanush Gallery</h1>
+
+<div class="gallery">
+    <div class="video-frame">
+        <video autoplay muted loop controls>
+            <source src="{{ video }}" type="video/mp4">
+        </video>
+    </div>
+
+    {% for p in photos %}
+    <div class="frame">
+        <img src="{{ p }}">
+    </div>
+    {% endfor %}
+</div>
+</body>
+</html>
+"""
+
+PHOTOS = [
+    "photos/1.jpeg",
+    "photos/2.jpeg",
+    "photos/3.jpeg",
+]
+
+VIDEO = "videos/video.mp4"
+
+@app.route("/")
+def home():
+    photos = [url_for("static", filename=p) for p in PHOTOS]
+    video = url_for("static", filename=VIDEO)
+    return render_template_string(HTML, photos=photos, video=video)
+if __name__ == "__main__":
+    app.run()
+
