@@ -27,7 +27,7 @@ HTML = """
         video { width:100%; border-radius:14px }
         .frame img {
             width:100%;
-            height:560px;
+            height:480px;
             object-fit:cover;
             border-radius:14px;
         }
