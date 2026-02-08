@@ -31,7 +31,7 @@ HTML = """
             object-fit:cover;
             border-radius:14px;
         }
-        @media(max-width:900px){
+        @media(max-width:700px){
             .gallery{ grid-template-columns:1fr }
             .video-frame{ grid-column:auto }
         }
