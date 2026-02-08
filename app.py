@@ -12,7 +12,7 @@ HTML = """
         h1 { text-align:center; padding:25px }
         .gallery {
             display:grid;
-            grid-template-columns:repeat(4,1fr);
+            grid-template-columns:repeat(3,1fr);
             gap:25px;
             max-width:1400px;
             margin:auto;
@@ -20,7 +20,7 @@ HTML = """
         }
         .video-frame {
             grid-column:2/span 2;
-            background:black;
+            background:White;
             padding:14px;
             border-radius:20px;
         }
@@ -29,7 +29,7 @@ HTML = """
             width:100%;
             height:480px;
             object-fit:cover;
-            border-radius:14px;
+            border-radius:12px;
         }
         @media(max-width:700px){
             .gallery{ grid-template-columns:1fr }
